@@ -5,7 +5,6 @@ import { users as seed } from './data/users';
 import type { Gender } from './types';
 
 export default function App() {
-  // Об'єкт userData (для першої частини) – беремо першого користувача:
   const userData = useMemo(() => seed[0], []);
   const [filter, setFilter] = useState<'all' | Gender>('all');
 
@@ -15,11 +14,11 @@ export default function App() {
 
       <section className="section">
         <h2>1) Проста картка користувача</h2>
-        {/* Переюзовуємо той самий UserCard, стилі всередині */}
+        {/* Переюзовуємо UserCard, стилі всередині */}
         {/* вік відображається лише якщо > 18, список хобі — через .map */}
         {/* кольори картки — залежно від віку */}
         {/* Для демонстрації використовуємо userData */}
-        <UserList users={[userData]} filter="all" />
+        {userData && <UserList users={[userData]} filter="all" />}
       </section>
 
       <section className="section">
